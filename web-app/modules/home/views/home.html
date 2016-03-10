@@ -1,0 +1,95 @@
+<div class="wrapper">
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+            Dashboard
+            <small>Control panel</small>
+          </h1>
+            <ol class="breadcrumb">
+                <li><a href=""><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="app/assets/images/checkin.svg" alt="User profile picture">
+                            <h3 class="profile-username text-center">{{userDetials.firstName}}  {{userDetials.lastName}}</h3>
+                            <p class="text-muted text-center">Status</p>
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item" >
+                                    <b>Currently</b> <a class="pull-right" ng-class="{true: 'text-success', false: 'text-danger'}[(userDetials.logState == 1)]"><b>{{(userDetials.logState ? 'Check In': 'Check Out' )}}</b></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Worked Hours</b> <a class="pull-right">1.60 Hrs</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Logged In Time</b> <a class="pull-right">{{firstLoggedInData.logTime | date : 'shortTime'}}</a>
+                                </li>
+                            </ul>
+                            <a class="btn btn-block" ng-class="{true: 'btn-success', false: 'btn-danger'}[(userDetials.logState == 0)]" ng-click="checkInCheckOutUser(userDetials.logState)"><b>{{(userDetials.logState ? 'Check Out': 'Check In' )}}</b></a>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="col-lg-8 col-xs-6">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <i class="fa fa-list-alt"></i>
+                            <h3 class="box-title">Today's History</h3>
+                        </div>
+                        <ul class="text-center list-group today-history-box">
+                            <div ng-if="!userTodayHistory.length">
+                                You don't history for today please checkin!!
+                            </div>
+                            <li class="list-group-item " ng-repeat="history in userTodayHistory">
+                                <img ng-src="app/assets/images/{{ (history.logState ? 'green-arrow.png' : 'red-arrow.png') }}" alt="user image" class="arrow-size offline">{{(history.logState ? 'Check-In': 'Check-Out')}} at {{history.logTime | date : 'shortTime' }}
+                            </li>
+                        </ul>
+                        <!-- /.chat -->
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+            <div class="row">
+                <!-- Left col -->
+                <section class="col-lg-12 connectedSortable">
+                    <!-- Chat box -->
+                    <div class="box box-success weak-history-list">
+                        <div class="box-header">
+                            <i class="fa fa-list-alt"></i>
+                            <h3 class="box-title">Week's History</h3>
+                        </div>
+                        <div class="box-body chat" id="chat-box">
+                            <div class="text-center" ng-if="!userOldHistory.length">
+                                You don't history for previous weeks!!
+                            </div>
+                            <table ng-if="userOldHistory.length" ng-table="tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+                                <tr ng-repeat="history in $data">
+                                    <td class="text-center" data-title="'Date'" sortable="'checkedInTime'">{{history.checkedInTime | date:"MM-dd-yyyy"}}</td>
+                                    <td class="text-center" data-title="'Checked In Time'" sortable="'checkedInTime'">{{history.checkedInTime | date: 'shortTime'}}</td>
+                                    <td class="text-center" data-title="'Checked Out Time'" sortable="'checkedOutTime'">{{history.checkedOutTime | date: 'shortTime'}}</td>
+                                    <td class="text-center" data-title="'Total Worked Time'"> {{getTimeDiffernce(history.checkedInTime, history.checkedOutTime)}} </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- /.chat -->
+                    </div>
+                    <!-- /.box (chat box) -->
+                </section>
+                <!-- /.Left col -->
+                <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                <!-- right col -->
+            </div>
+            <!-- /.row (main row) -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>

@@ -4,14 +4,32 @@
 	<title>Simple Blog Application</title>
 	<!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="wee-app/resources/css/skin-purple-light.min.css">
+    <link rel="stylesheet" href="web-app/resources/css/skin-purple-light.min.css">
+    <link rel="stylesheet" href="web-app/resources/css/theme.css">
+    <link rel="stylesheet" href="web-app/resources/css/app.css">
 </head>
 <body>
-
+    <div ui-view="header"></div>
+    <div ui-view="sidebar"></div>
+    <div ui-view></div>
+    <div ui-view="footer"></div>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Angular dependencies -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+     <script src="web-app/resources/js/custom.js"></script>
 	<!-- Login module-->
     <script src="web-app/modules/login/login.index.js"></script>
     <script src="web-app/modules/login/controllers/login.controller.js"></script>
     <script src="web-app/modules/login/login.route.js"></script>
+
+    <!-- Home module-->
+    <script src="web-app/modules/home/home.index.js"></script>
+    <script src="web-app/modules/home/controllers/home.controller.js"></script>
+    <script src="web-app/modules/home/home.route.js"></script>
+    
 	<script src="app.js"></script>
 </body>
 </html>

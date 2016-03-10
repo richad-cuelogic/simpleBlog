@@ -1,0 +1,25 @@
+{
+  "name": "simpleblog",
+  "version": "1.0.0",
+  "description": "Simple Blog Application",
+  "main": "app.js",
+  "dependencies": {
+    "bower": "^1.7.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richad-cuelogic/simpleBlog.git"
+  },
+  "author": "Richa Dagar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richad-cuelogic/simpleBlog/issues"
+  },
+  "homepage": "https://github.com/richad-cuelogic/simpleBlog#readme"
+}
