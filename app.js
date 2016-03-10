@@ -1,8 +1,7 @@
 angular
-	.module('webApp',[\
-		'ui-router',
-		'login',
-		'home',
+	.module('webApp',[
+		'ui.router',
+		'home'
 		])
 	.config(['$urlRouterProvider', '$stateProvider',stateProvider])
     .run(['$rootScope', '$state', 'localStorageService']);

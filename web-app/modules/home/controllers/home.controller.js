@@ -1,7 +1,7 @@
-angular.
-module('home',[])
-.controller('homeCtrl',['$scope','$rootScope']);
+angular
+	.module('home')
+	.controller('homeCtrl',['$scope','$rootScope']);
 
 
-function homeCtrl($scope){
-}
+	function homeCtrl($scope,$rootScope){
+	}
